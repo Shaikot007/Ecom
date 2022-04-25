@@ -21,38 +21,38 @@ Route::get('/', [
 ]);
 
 Route::get('/about-us', [
-    'uses'      => 'App\Http\Controllers\EcomController@about',
-    'as'        => 'about'
+    'uses'          => 'App\Http\Controllers\EcomController@about',
+    'as'            => 'about'
 ]);
 
 Route::get('/story', [
-    'uses'      => 'App\Http\Controllers\EcomController@story',
-    'as'        => 'story'
+    'uses'          => 'App\Http\Controllers\EcomController@story',
+    'as'            => 'story'
 ]);
 
 Route::get('/our-team', [
-    'uses'      => 'App\Http\Controllers\EcomController@team',
-    'as'        => 'team'
+    'uses'          => 'App\Http\Controllers\EcomController@team',
+    'as'            => 'team'
 ]);
 
 Route::get('/gallery', [
-    'uses'      => 'App\Http\Controllers\EcomController@gallery',
-    'as'        => 'gallery'
+    'uses'          => 'App\Http\Controllers\EcomController@gallery',
+    'as'            => 'gallery'
 ]);
 
 Route::get('/faq', [
-    'uses'      => 'App\Http\Controllers\EcomController@faq',
-    'as'        => 'faq'
+    'uses'          => 'App\Http\Controllers\EcomController@faq',
+    'as'            => 'faq'
 ]);
 
 Route::get('/sub-category-product/{id}', [
-    'uses'      => 'App\Http\Controllers\EcomController@subCategoryProduct',
-    'as'        => 'sub-category-product'
+    'uses'          => 'App\Http\Controllers\EcomController@subCategoryProduct',
+    'as'            => 'sub-category-product'
 ]);
 
 Route::get('/brand-product/{id}', [
-    'uses'      => 'App\Http\Controllers\EcomController@brandProduct',
-    'as'        => 'brand-product'
+    'uses'          => 'App\Http\Controllers\EcomController@brandProduct',
+    'as'            => 'brand-product'
 ]);
 
 Route::get('/product-details/{id}', [
@@ -60,10 +60,14 @@ Route::get('/product-details/{id}', [
     'as'            => 'product-details'
 ]);
 
+Route::get('/search', [
+    'uses'          => 'App\Http\Controllers\EcomController@search',
+    'as'            => 'search'
+]);
+
 //===============================Ecom route end==============================
 
 //==============================Cart route start=============================
-
 
 Route::post('/add-to-cart/{id}', [
     'uses'          => 'App\Http\Controllers\CartController@add',
@@ -153,7 +157,6 @@ Route::post('/update-category/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-
 Route::post('/delete-category/{id}', [
     'uses'          => 'App\Http\Controllers\CategoryController@delete',
     'as'            => 'category.delete',
@@ -193,7 +196,6 @@ Route::post('/update-sub-category/{id}', [
     'as'            => 'subcategory.update',
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
-
 
 Route::post('/delete-sub-category/{id}', [
     'uses'          => 'App\Http\Controllers\SubCategoryController@delete',
@@ -337,9 +339,21 @@ Route::get('/manage-order', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
+Route::get('/details-order/{id}', [
+    'uses'          => 'App\Http\Controllers\OrderController@details',
+    'as'            => 'order.details',
+    'middleware'    => ['auth:sanctum', 'verified']
+]);
+
+Route::get('/invoice/{id}', [
+    'uses'          => 'App\Http\Controllers\OrderDetailController@invoice',
+    'as'            => 'invoice',
+    'middleware'    => ['auth:sanctum', 'verified']
+]);
+
 //============================Order route end=========================
 
-//===========================Order route start========================
+//==========================Customer route start======================
 
 Route::get('/add-customer', [
     'uses'          => 'App\Http\Controllers\CustomerController@index',
@@ -377,4 +391,4 @@ Route::post('/delete-customer/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//============================Order route end=========================
+//==========================Customer route end==========================

@@ -10,7 +10,8 @@ use Illuminate\Queue\SerializesModels;
 class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
-    private $detail;
+
+    public $detail;
 
     /**
      * Create a new message instance.

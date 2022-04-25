@@ -18,8 +18,9 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id');
             $table->text('order_date');
             $table->text('order_timestamp');
-            $table->float('order_total', 10,2);
-            $table->float('tax_total', 10,2);
+            $table->string('order_sub_total');
+            $table->string('tax_total');
+            $table->string('order_total');
             $table->string('order_status')->default('Pending');
             $table->float('payment_amount', 10,2)->default(0);
             $table->string('payment_status')->default('Pending');

@@ -54,20 +54,12 @@
                             <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                 <div class="product">
                                     <figure class="product-media">
-{{--                                        <a href="{{route('product-details', ['id' => $product->id])}}">--}}
-                                            <img src="{{asset($product->image)}}" alt="Product image" class="product-image"/>
-                                        {{--</a>--}}
-
-                                        {{--<div class="product-action-vertical">--}}
-                                            {{--<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>--}}
-                                        {{--</div><!-- End .product-action -->--}}
+                                        <img src="{{asset($product->image)}}" alt="Product image" class="product-image"/>
 
                                         <div class="product-action action-icon-top">
-                                            {{--<a href="" class="btn-product btn-cart"><span>add to cart</span></a>--}}
                                             <a href="{{route('product-details', ['id' => $product->id])}}" class="btn btn-outline-warning btn-block" title="Product details">
                                                 <span>Product details</span>
                                             </a>
-                                            {{--<a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a>--}}
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 

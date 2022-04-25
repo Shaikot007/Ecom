@@ -11,6 +11,6 @@ class OrderDetail extends Model
 
     public function orderProduct()
     {
-        return $this->hasMany('App\Models\Product', 'id', 'product_id');
+        return $this->hasOne('App\Models\Product', 'id', 'product_id');
     }
 }

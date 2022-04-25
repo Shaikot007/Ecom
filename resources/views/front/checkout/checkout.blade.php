@@ -55,17 +55,15 @@
                                         </thead>
 
                                         <tbody>
-                                            @php($sum=0)
                                             @foreach($cart_items as $cart_product)
                                                 <tr>
                                                     <td>{{$cart_product->name}}</td>
-                                                    <td>৳ {{$cart_product->price*$cart_product->qty}}</td>
-                                                    @php($sum = $sum + ($cart_product->price*$cart_product->qty))
+                                                    <td>৳ {{number_format($cart_product->price*$cart_product->qty, 2)}}</td>
                                                 </tr>
                                             @endforeach
                                             <tr class="summary-subtotal">
                                                 <td>Subtotal:</td>
-                                                <td>৳ {{number_format($sum)}}</td>
+                                                <td>৳ {{$cart_subtotal}}</td>
                                             </tr>
                                             <tr>
                                                 <td>Shipping:</td>
@@ -73,13 +71,13 @@
                                             </tr>
                                             <tr>
                                                 <td>Tax:</td>
-                                                <td>৳ {{$tax = ($sum * 15) / 100}}</td>
+                                                <td>৳ {{$cart_tax}}</td>
                                             </tr>
                                             <tr class="summary-total">
                                                 <td>Total:</td>
-                                                <td>৳ {{$tax+$sum}}</td>
-                                                <?php Session::put('tax', $tax);?>
-                                                <?php Session::put('total', ($tax + $sum));?>
+                                                <td>৳ {{$cart_total}}</td>
+<!--                                                --><?php //Session::put('tax', $cart_tax);?>
+<!--                                                --><?php //Session::put('total', $cart_total);?>
                                             </tr>
                                         </tbody>
                                     </table><!-- End .table table-summary -->

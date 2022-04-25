@@ -14,7 +14,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Customer</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Customer</a></li>
                     <li class="breadcrumb-item"><a href="#">Order</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Complete Order</li>
                 </ol>
@@ -26,9 +26,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2 class="checkout-title text-center">
-                                Wellcome {{Session::get('name')}}, {{Session::get('message')}}
-                            </h2>
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Wellcome {{Session::get('name')}} !</h4>
+                                <hr/>
+                                <p class="mb-0 text-white">{{Session::get('message')}}</p>
+                            </div>
                         </div><!-- End .col-lg-9 -->
                     </div>
                 </div><!-- End .container -->

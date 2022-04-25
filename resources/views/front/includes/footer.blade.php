@@ -80,7 +80,7 @@
         <div class="container">
             <p class="footer-copyright">Copyright © 2022 ecom store. All Rights Reserved.</p><!-- End .footer-copyright -->
             <figure class="footer-payments">
-                <p>Made by <a href="https://github.com/Shaikot007">Shaikot</a></p>
+                <p>Made by <a href="https://github.com/Shaikot007" target="_blank">Shaikot</a></p>
             </figure><!-- End .footer-payments -->
         </div><!-- End .container -->
     </div><!-- End .footer-bottom -->

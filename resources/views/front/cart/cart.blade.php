@@ -47,7 +47,6 @@
                                 </thead>
 
                                 <tbody>
-                                    @php($sum=0)
                                     @foreach($cart_items as $cart_product)
                                         <tr>
                                             <td class="product-col">
@@ -82,7 +81,6 @@
                                                 </td>
                                             </form>
                                         </tr>
-                                        @php($sum = $sum + ($cart_product->price*$cart_product->qty))
                                     @endforeach
                                 </tbody>
                             </table><!-- End .table table-wishlist -->
@@ -96,7 +94,7 @@
                                     <tbody>
                                         <tr class="summary-subtotal">
                                             <td>Subtotal:</td>
-                                            <td>৳ {{$sum}}</td>
+                                            <td>৳ {{$cart_subtotal}}</td>
                                         </tr><!-- End .summary-subtotal -->
                                         <tr class="summary-shipping">
                                             <td>Shipping:</td>
@@ -110,15 +108,12 @@
 
                                         <tr class="summary-shipping-estimate">
                                             <td>Tax:</td>
-                                            <td>
-                                                @php($tax = ($sum * 15) / 100)
-                                                ৳ {{$tax}}
-                                            </td>
+                                            <td>৳ {{$cart_tax}}</td>
                                         </tr><!-- End .summary-shipping-estimate -->
 
                                         <tr class="summary-total">
                                             <td>Total:</td>
-                                            <td>৳ {{$sum + $tax}}</td>
+                                            <td>৳ {{$cart_total}}</td>
                                         </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->

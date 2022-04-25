@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Cart;
 use Session;
 use Mail;
+use DateTime;
+use DateTimeZone;
 
 class CheckoutController extends Controller
 {
@@ -19,6 +21,7 @@ class CheckoutController extends Controller
     private $orderDetail;
     private $cartProducts;
     private $detail = [];
+//    private $date = new DateTime("now", new DateTimeZone('Asia/Dhaka'));
 
     public function index()
     {
@@ -26,6 +29,8 @@ class CheckoutController extends Controller
             'categories'    => Category::all(),
             'cart_items'    => Cart::content(),
             'cart_count'    => Cart::count(),
+            'cart_subtotal' => Cart::subtotal(),
+            'cart_tax'      => Cart::tax(),
             'cart_total'    => Cart::total()
         ]);
     }
@@ -45,10 +50,14 @@ class CheckoutController extends Controller
 
         $this->order = new Order();
         $this->order->customer_id       = $this->customer->id;
-        $this->order->order_date        = date('Y-m-d');
-        $this->order->order_timestamp   = strtotime(date('Y-m-d'));
-        $this->order->order_total       = Session::get('total');
-        $this->order->tax_total         = Session::get('tax');
+
+        $date = new DateTime("now", new DateTimeZone('Asia/Dhaka'));
+
+        $this->order->order_date        = $date->format('F j, Y g:i:s a');
+        $this->order->order_timestamp   = strtotime($date->format('Y-m-d H:i:s.v'));
+        $this->order->order_sub_total   = Cart::subtotal();
+        $this->order->tax_total         = Cart::tax();
+        $this->order->order_total       = Cart::total();
         $this->order->delivery_address  = $request->address;
         $this->order->save();
 
@@ -63,18 +72,23 @@ class CheckoutController extends Controller
             $this->orderDetail->save();
         }
 
-        Cart::destroy();
-
         /*==========email send==========*/
 
         $this->detail = [
-            'title' => 'This is mail title',
-            'body'  => 'This is mail body',
+            'order_id'          => $this->order->order_timestamp,
+            'cart_count'        => Cart::count(),
+            'cart_subtotal'     => Cart::subtotal(),
+            'cart_tax'          => Cart::tax(),
+            'cart_total'        => Cart::total(),
+            'delivery_address'  => $this->order->delivery_address,
+            'delivery_date'     => $this->order->order_date
         ];
 
         Mail::to($this->customer->email)->send(new OrderMail($this->detail));
 
         /*==========email send==========*/
+
+        Cart::destroy();
 
         return redirect('/complete-order')->with('message', 'Your order info submit successfully. Please wait we will contact with you soon.');
     }

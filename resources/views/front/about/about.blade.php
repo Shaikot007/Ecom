@@ -45,7 +45,7 @@
                             <p class="lead text-primary mb-3">Pellentesque odio nisi, euismod pharetra a ultricies <br>in diam. Sed arcu. Cras consequat</p><!-- End .lead text-primary -->
                             <p class="mb-2">Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue. </p>
 
-                            <a href="blog.html" class="btn btn-sm btn-minwidth btn-outline-primary-2">
+                            <a href="{{route('story')}}" class="btn btn-sm btn-minwidth btn-outline-primary-2">
                                 <span>VIEW OUR NEWS</span>
                                 <i class="icon-long-arrow-right"></i>
                             </a>
@@ -99,9 +99,9 @@
                                         <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
                                         <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                         <div class="social-icons social-icons-simple">
-                                            <a href="www.facebook.com" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                            <a href="www.twitter.com" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                            <a href="www.instagram.com" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                            <a href="https://www.facebook.com/" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                            <a href="https://twitter.com/" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                            <a href="https://www.instagram.com/" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                         </div><!-- End .soial-icons -->
                                     </div><!-- End .member-overlay-content -->
                                 </figcaption><!-- End .member-overlay -->
@@ -122,9 +122,9 @@
                                         <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
                                         <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                         <div class="social-icons social-icons-simple">
-                                            <a href="www.facebook.com" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                            <a href="www.twitter.com" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                            <a href="www.instagram.com" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                            <a href="https://www.facebook.com/" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                            <a href="https://twitter.com/" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                            <a href="https://www.instagram.com/" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                         </div><!-- End .soial-icons -->
                                     </div><!-- End .member-overlay-content -->
                                 </figcaption><!-- End .member-overlay -->
@@ -145,9 +145,9 @@
                                         <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
                                         <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                                         <div class="social-icons social-icons-simple">
-                                            <a href="www.facebook.com" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                            <a href="www.twitter.com" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                            <a href="www.instagram.com" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                            <a href="https://www.facebook.com/" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                            <a href="https://twitter.com/" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                            <a href="https://www.instagram.com/" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                         </div><!-- End .soial-icons -->
                                     </div><!-- End .member-overlay-content -->
                                 </figcaption><!-- End .member-overlay -->

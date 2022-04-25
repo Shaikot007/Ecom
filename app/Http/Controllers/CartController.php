@@ -29,10 +29,14 @@ class CartController extends Controller
 
     public function show()
     {
+        Cart::setGlobalTax(15);
+
         return view('front.cart.cart', [
             'categories'    => Category::all(),
             'cart_items'    => Cart::content(),
             'cart_count'    => Cart::count(),
+            'cart_subtotal' => Cart::subtotal(),
+            'cart_tax'      => Cart::tax(),
             'cart_total'    => Cart::total()
         ]);
     }

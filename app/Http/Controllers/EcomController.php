@@ -111,4 +111,15 @@ class EcomController extends Controller
             'cart_total'    => Cart::total()
         ]);
     }
+
+    public function search(Request $request)
+    {
+        return view('front.product.search', [
+            'products'      => Product::where('name', 'like', '%'.$request->input('query').'%')->get(),
+            'categories'    => Category::all(),
+            'cart_items'    => Cart::content(),
+            'cart_count'    => Cart::count(),
+            'cart_total'    => Cart::total()
+        ]);
+    }
 }
