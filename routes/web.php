@@ -353,42 +353,42 @@ Route::get('/invoice/{id}', [
 
 //============================Order route end=========================
 
-//==========================Customer route start======================
+//==========================User route start======================
 
-Route::get('/add-customer', [
-    'uses'          => 'App\Http\Controllers\CustomerController@index',
-    'as'            => 'customer.add',
+Route::get('/add-user', [
+    'uses'          => 'App\Http\Controllers\UserController@index',
+    'as'            => 'user.add',
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-Route::get('/manage-customer', [
-    'uses'          => 'App\Http\Controllers\CustomerController@manage',
-    'as'            => 'customer.manage',
+Route::get('/manage-user', [
+    'uses'          => 'App\Http\Controllers\UserController@manage',
+    'as'            => 'user.manage',
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-Route::post('/new-customer', [
-    'uses'          => 'App\Http\Controllers\CustomerController@create',
-    'as'            => 'customer.new',
+Route::post('/new-user', [
+    'uses'          => 'App\Http\Controllers\UserController@create',
+    'as'            => 'user.new',
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-Route::get('/edit-customer/{id}', [
-    'uses'          => 'App\Http\Controllers\CustomerController@edit',
-    'as'            => 'customer.edit',
+Route::get('/edit-user/{id}', [
+    'uses'          => 'App\Http\Controllers\UserController@edit',
+    'as'            => 'user.edit',
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-Route::post('/update-customer/{id}', [
-    'uses'          => 'App\Http\Controllers\CustomerController@update',
-    'as'            => 'customer.update',
+Route::post('/update-user/{id}', [
+    'uses'          => 'App\Http\Controllers\UserController@update',
+    'as'            => 'user.update',
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-Route::post('/delete-customer/{id}', [
-    'uses'          => 'App\Http\Controllers\CustomerController@delete',
-    'as'            => 'customer.delete',
+Route::post('/delete-user/{id}', [
+    'uses'          => 'App\Http\Controllers\UserController@delete',
+    'as'            => 'user.delete',
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//==========================Customer route end==========================
+//==========================User route end==========================

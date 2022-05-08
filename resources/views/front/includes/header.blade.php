@@ -35,59 +35,82 @@
                         <p>Cart</p>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-cart-products">
-                            @foreach($cart_items as $cart)
-                                <div class="product">
-                                    <div class="product-cart-details">
-                                        <h4 class="product-title">
-                                            <p>{{$cart->name}}</p>
-                                        </h4>
+                    @if($cart_count !== 0)
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-cart-products">
+                                @foreach($cart_items as $cart)
+                                    <div class="product">
+                                        <div class="product-cart-details">
+                                            <h4 class="product-title">
+                                                <p>{{$cart->name}}</p>
+                                            </h4>
 
-                                        <span class="cart-product-info">
-                                            <span class="cart-product-qty">{{$cart->qty}}</span>
-                                            x ৳ {{$cart->price}}
-                                        </span>
-                                    </div><!-- End .product-cart-details -->
+                                            <span class="cart-product-info">
+                                                <span class="cart-product-qty">{{$cart->qty}}</span>
+                                                x ৳ {{$cart->price}}
+                                            </span>
+                                        </div><!-- End .product-cart-details -->
 
-                                    <figure class="product-image-container">
-                                        <div class="product-image">
-                                            <img src="{{asset($cart->options->image)}}" alt="product"/>
-                                        </div>
-                                    </figure>
-                                    <a href="{{route('cart.delete', ['id' => $cart->rowId])}}" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                </div><!-- End .product -->
-                            @endforeach
-                        </div><!-- End .cart-product -->
+                                        <figure class="product-image-container">
+                                            <div class="product-image">
+                                                <img src="{{asset($cart->options->image)}}" alt="product"/>
+                                            </div>
+                                        </figure>
+                                        <a href="{{route('cart.delete', ['id' => $cart->rowId])}}" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                    </div><!-- End .product -->
+                                @endforeach
+                            </div><!-- End .cart-product -->
 
-                        <div class="dropdown-cart-total">
-                            <span>Total</span>
+                            <div class="dropdown-cart-total">
+                                <span>Total</span>
 
-                            <span class="cart-total-price">৳ {{$cart_total}}</span>
-                        </div><!-- End .dropdown-cart-total -->
+                                <span class="cart-total-price">৳ {{$cart_total}}</span>
+                            </div><!-- End .dropdown-cart-total -->
 
-                        <div class="dropdown-cart-action">
-                            <a href="{{route('cart.show')}}" class="btn btn-primary">View Cart</a>
-                            <a href="{{route('checkout')}}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
-                        </div><!-- End .dropdown-cart-total -->
-                    </div><!-- End .dropdown-menu -->
+                            <div class="dropdown-cart-action">
+                                <a href="{{route('cart.show')}}" class="btn btn-primary">View Cart</a>
+                                <a href="{{route('checkout')}}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .dropdown-cart-total -->
+                        </div><!-- End .dropdown-menu -->
+                    @endif
+
                 </div><!-- End .cart-dropdown -->
 
                 <div class="wishlist">
-                    @if(Session::get('customer_id'))
-                        <a href="{{route('customer.logout')}}" title="Sign out">
+                    {{--@if(Session::get('customer_id'))--}}
+                        {{--<a href="{{route('customer.logout')}}" title="Sign out">--}}
+                            {{--<div class="icon">--}}
+                                {{--<i class="icon-user"></i>--}}
+                            {{--</div>--}}
+                            {{--<p>Sign out</p>--}}
+                        {{--</a>--}}
+
+                    @if(\Illuminate\Support\Facades\Auth::user() || Session::get('customer_id') )
+                        <a href="{{route('logout')}}" title="Sign out" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
                             <div class="icon">
                                 <i class="icon-user"></i>
                             </div>
                             <p>Sign out</p>
                         </a>
+                        <form action="{{route('logout')}}" method="post" id="logoutForm">
+                            @csrf
+                        </form>
                     @else
-                        <a href="#signin-modal" data-toggle="modal" title="Sign in / Sign up">
+                        <a href="{{route('register')}}" title="Register">
                             <div class="icon">
                                 <i class="icon-user"></i>
                             </div>
-                            <p>Sign in / Sign up</p>
+                            <p>Register</p>
                         </a>
+
+
+
+                        {{--<a href="#signin-modal" data-toggle="modal" title="Sign in / Sign up">--}}
+                            {{--<div class="icon">--}}
+                                {{--<i class="icon-user"></i>--}}
+                            {{--</div>--}}
+                            {{--<p>Sign in / Sign up</p>--}}
+                        {{--</a>--}}
                     @endif
                 </div><!-- End .compare-dropdown -->
 

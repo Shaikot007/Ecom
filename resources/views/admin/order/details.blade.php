@@ -21,12 +21,10 @@
                                 </button>
                             </div>
                         @endif
-                        <table class="table table-striped table-bordered table-hover text-center" id="example-table"
-                               cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered table-hover text-center" id="example-table" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">Order id</th>
-                                    {{--<th class="text-center">Order tax</th>--}}
                                     <th class="text-center">Product name</th>
                                     <th class="text-center">Product price</th>
                                     <th class="text-center">Product quantity</th>
@@ -36,8 +34,6 @@
                                 <tbody>
                                     <tr>
                                         <td>{{$orders->order_timestamp}}</td>
-{{--                                        <td>৳ {{$orders->tax_total}}</td>--}}
-
                                         <td>{{$details->orderProduct->name}}</td>
                                         <td>{{$details->product_price}}</td>
                                         <td>{{$details->product_quantity}}</td>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -29,7 +29,7 @@ class CartController extends Controller
 
     public function show()
     {
-        Cart::setGlobalTax(15);
+        Cart::setGlobalTax(5);
 
         return view('front.cart.cart', [
             'categories'    => Category::all(),

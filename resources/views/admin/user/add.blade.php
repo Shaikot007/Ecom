@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-    Add new customer
+    Add new user
 @endsection
 
 @section('body')
@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="ibox">
                 <div class="ibox-head">
-                    <div class="ibox-title">Add customer form</div>
+                    <div class="ibox-title">Add user form</div>
                     <div class="ibox-tools">
                         <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
                         <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
@@ -24,35 +24,41 @@
                             </button>
                         </div>
                     @endif
-                    <form class="form-horizontal" action="{{route('customer.new')}}" method="post">
+                    <form class="form-horizontal" action="{{route('user.new')}}" method="post">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Customer name</label>
+                            <label class="col-sm-2 col-form-label">User name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="Enter customer name"/>
+                                <input class="form-control" type="text" name="name" placeholder="Enter user name" required/>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Customer email</label>
+                            <label class="col-sm-2 col-form-label">User email</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="email" name="email" placeholder="Enter customer description"/>
+                                <input class="form-control" type="email" name="email" placeholder="Enter user description" required/>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Customer mobile</label>
+                            <label class="col-sm-2 col-form-label">User password</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="number" name="mobile" placeholder="Enter customer mobile number"/>
+                                <input class="form-control" type="password" name="password" placeholder="Enter user password" required/>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Customer address</label>
+                            <label class="col-sm-2 col-form-label">User phone number</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="address" placeholder="Enter customer address"></textarea>
+                                <input class="form-control" type="number" name="phone_number" placeholder="Enter user phone number" required/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">User address</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="address" placeholder="Enter user address" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10 ml-sm-auto">
-                                <button class="btn btn-info btn-block" type="submit">Create new customer</button>
+                                <button class="btn btn-info btn-block" type="submit">Create new user</button>
                             </div>
                         </div>
                     </form>

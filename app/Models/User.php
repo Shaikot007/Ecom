@@ -60,4 +60,34 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    private static $user;
+
+    public static function newUser($request)
+    {
+        self::$user = new User();
+        self::$user->name           = $request->name;
+        self::$user->email          = $request->email;
+        self::$user->password       = $request->password;
+        self::$user->phone_number   = $request->phone_number;
+        self::$user->address        = $request->address;
+        self::$user->save();
+    }
+
+    public static function updateUser($request, $id)
+    {
+        self::$user = User::find($id);
+        self::$user->name           = $request->name;
+        self::$user->email          = $request->email;
+        self::$user->phone_number   = $request->phone_number;
+        self::$user->address        = $request->address;
+        self::$user->user_type      = $request->user_type;
+        self::$user->save();
+    }
+
+    public static function deleteUser($id)
+    {
+        self::$user = User::find($id);
+        self::$user->delete();
+    }
 }

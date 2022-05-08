@@ -118,7 +118,16 @@
                                     </tbody>
                                 </table><!-- End .table table-summary -->
 
-                                <a href="{{route('checkout')}}" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
+                                @if($cart_count !== 0)
+
+                                    @if(\Illuminate\Support\Facades\Auth::check())
+                                        <a href="{{route('checkout')}}" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
+                                    @else
+                                        <a href="{{route('register')}}" class="btn btn-outline-primary-2 btn-order btn-block">REGISTER HERE</a>
+                                    @endif
+
+                                @endif
+
                             </div><!-- End .summary -->
 
                             <a href="{{route('home')}}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>

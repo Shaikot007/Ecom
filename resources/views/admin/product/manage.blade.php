@@ -30,6 +30,7 @@
                             <th class="text-center">Unit name</th>
                             <th class="text-center">Product name</th>
                             <th class="text-center">Product code</th>
+                            {{--<th class="text-center">Product stock</th>--}}
                             <th class="text-center">Product image</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Action</th>

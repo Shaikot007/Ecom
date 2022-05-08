@@ -142,13 +142,20 @@
             </li>
             <li class="dropdown dropdown-user">
                 <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
-                    <img src="{{asset('/admin')}}/assets/img/admin-avatar.png"/>
-                    <span></span>Admin<i class="fa fa-angle-down m-l-5"></i></a>
+                    {{--<img src="{{asset('/admin')}}/assets/img/admin-avatar.png"/>--}}
+                    <?php $user = \Illuminate\Support\Facades\Auth::user(); ?>
+                    <span></span>{{$user->name}}<i class="fa fa-angle-down m-l-5"></i></a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{url('/user/profile')}}">
+                    <a class="dropdown-item" style="font-size: smaller" href="#">
+                        Manage account
+                    </a>
+                    <a class="dropdown-item" style="color: black" href="{{url('/')}}">
+                        <i class="fa fa-home"></i> Home
+                    </a>
+                    <a class="dropdown-item" style="color: black" href="{{url('/user/profile')}}">
                         <i class="fa fa-user"></i> Profile
                     </a>
-                    <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+                    <a class="dropdown-item" style="color: black" href="" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
                         <i class="fa fa-power-off"></i> Logout
                     </a>
                     <form action="{{route('logout')}}" method="post" id="logoutForm">

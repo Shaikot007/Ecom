@@ -67,6 +67,12 @@
                             <li><a href="{{route('story')}}">Our story</a></li>
                             <li><a href="{{route('team')}}">Our team</a></li>
                             <li><a href="{{route('gallery')}}">Our gallery</a></li>
+                            @if(\Illuminate\Support\Facades\Auth::check())
+                                <li><a href="{{route('profile.show')}}">Your profile</a></li>
+                                @if(\Illuminate\Support\Facades\Auth::user()->user_type === 'admin')
+                                    <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+                                @endif
+                            @endif
                             <li><a href="{{route('faq')}}">FAQ</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->

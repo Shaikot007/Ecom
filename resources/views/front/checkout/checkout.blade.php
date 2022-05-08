@@ -27,22 +27,10 @@
                     <form action="{{route('order.new')}}" method="post">
                         @csrf
                         <div class="row">
-                            <div class="col-lg-9">
-                                <h2 class="checkout-title text-center">Please fillup the form carefully</h2>
-                                <hr/>
-                                <label>Full Name <span class="text-danger">*</span></label>
-                                <input type="text" name="name" required class="form-control"/>
+                            <div class="col-lg-2">
+                            </div>
 
-                                <label>Email Address </label>
-                                <input type="email" name="email" required class="form-control"/>
-
-                                <label>Mobile Number <span class="text-danger">*</span></label>
-                                <input type="text" name="mobile" required class="form-control"/>
-
-                                <label>Delivery Address <span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address" required cols="30" rows="4" placeholder="Please give order delivery address"></textarea>
-                            </div><!-- End .col-lg-9 -->
-                            <aside class="col-lg-3">
+                            <div class="col-lg-8">
                                 <div class="summary">
                                     <h3 class="summary-title">Your order</h3>
 
@@ -76,17 +64,21 @@
                                             <tr class="summary-total">
                                                 <td>Total:</td>
                                                 <td>৳ {{$cart_total}}</td>
-<!--                                                --><?php //Session::put('tax', $cart_tax);?>
-<!--                                                --><?php //Session::put('total', $cart_total);?>
                                             </tr>
                                         </tbody>
                                     </table><!-- End .table table-summary -->
 
-                                    <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-                                        Place Order
-                                    </button>
+                                    @if(\Illuminate\Support\Facades\Auth::check() && $cart_count !== 0)
+                                        <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+                                            Place Order
+                                        </button>
+                                    @endif
                                 </div><!-- End .summary -->
-                            </aside><!-- End .col-lg-3 -->
+                            </div><!-- End .col-lg-8 -->
+
+                            <div class="col-lg-2">
+                            </div>
+
                         </div><!-- End .row -->
                     </form>
                 </div><!-- End .container -->

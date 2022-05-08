@@ -8,7 +8,8 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
-use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Mail;
 use DateTime;
@@ -16,12 +17,11 @@ use DateTimeZone;
 
 class CheckoutController extends Controller
 {
-    private $customer;
+    private $user;
     private $order;
     private $orderDetail;
     private $cartProducts;
     private $detail = [];
-//    private $date = new DateTime("now", new DateTimeZone('Asia/Dhaka'));
 
     public function index()
     {
@@ -37,28 +37,21 @@ class CheckoutController extends Controller
 
     public function newOrder(Request $request)
     {
-        $this->customer = new Customer();
-        $this->customer->name     = $request->name;
-        $this->customer->email    = $request->email;
-        $this->customer->mobile   = $request->mobile;
-        $this->customer->password = bcrypt($request->mobile);
-        $this->customer->address  = $request->address;
-        $this->customer->save();
 
-        Session::put('customer_id', $this->customer->id);
-        Session::put('name', $this->customer->name);
+        $this->user = Auth::user();
+
+        Session::put('customer_id', $this->user->id);
+        Session::put('name', $this->user->name);
 
         $this->order = new Order();
-        $this->order->customer_id       = $this->customer->id;
-
         $date = new DateTime("now", new DateTimeZone('Asia/Dhaka'));
-
+        $this->order->customer_id       = $this->user->id;
         $this->order->order_date        = $date->format('F j, Y g:i:s a');
         $this->order->order_timestamp   = strtotime($date->format('Y-m-d H:i:s.v'));
         $this->order->order_sub_total   = Cart::subtotal();
         $this->order->tax_total         = Cart::tax();
         $this->order->order_total       = Cart::total();
-        $this->order->delivery_address  = $request->address;
+        $this->order->delivery_address  = $this->user->address;
         $this->order->save();
 
         $this->cartProducts = Cart::content();
@@ -84,7 +77,7 @@ class CheckoutController extends Controller
             'delivery_date'     => $this->order->order_date
         ];
 
-        Mail::to($this->customer->email)->send(new OrderMail($this->detail));
+        Mail::to($this->user->email)->send(new OrderMail($this->detail));
 
         /*==========email send==========*/
 
