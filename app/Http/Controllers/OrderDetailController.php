@@ -12,8 +12,7 @@ class OrderDetailController extends Controller
     {
         return view('admin.order.invoice', [
             'orders'         => Order::find($id),
-            'order_details'  => OrderDetail::where('order_id', $id)->get(),
-//            'order_subtotal' => Cart::subtotal()
+            'order_details'  => OrderDetail::where('order_id', $id)->get()
         ]);
     }
 }

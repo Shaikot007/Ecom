@@ -21,8 +21,7 @@
                                 </button>
                             </div>
                         @endif
-                        <table class="table table-striped table-bordered table-hover text-center" id="example-table"
-                               cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered table-hover text-center" id="example-table" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
@@ -32,30 +31,27 @@
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                                @foreach($units as $unit)
-                                    <tbody>
+                            @foreach($units as $unit)
+                                <tbody>
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$unit->name}}</td>
                                         <td>{{$unit->description}}</td>
                                         <td>{{$unit->status == 1 ? 'Published' : 'Unpublished'}}</td>
                                         <td>
-                                            <a href="{{route('unit.edit', ['id' => $unit->id])}}"
-                                               class="btn btn-success btn-xs">
+                                            <a href="{{route('unit.edit', ['id' => $unit->id])}}" class="btn btn-success btn-xs" title="Edit">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a href="" class="btn btn-danger btn-xs"
-                                               onclick="event.preventDefault(); document.getElementById('unitDeleteForm{{$unit->id}}').submit();">
+                                            <a href="" class="btn btn-danger btn-xs" onclick="event.preventDefault(); document.getElementById('unitDeleteForm{{$unit->id}}').submit();" title="Delete">
                                                 <i class="fa fa-trash"></i>
                                             </a>
-                                            <form action="{{route('unit.delete', ['id' => $unit->id])}}"
-                                                  method="post" id="unitDeleteForm{{$unit->id}}">
+                                            <form action="{{route('unit.delete', ['id' => $unit->id])}}" method="post" id="unitDeleteForm{{$unit->id}}">
                                                 @csrf
                                             </form>
                                         </td>
                                     </tr>
-                                    </tbody>
-                                @endforeach
+                                </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

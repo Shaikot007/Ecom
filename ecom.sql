@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2022 at 08:04 AM
+-- Generation Time: Jun 04, 2022 at 08:10 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -80,33 +80,6 @@ INSERT INTO `categories` (`id`, `name`, `description`, `image`, `status`, `creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
---
-
-CREATE TABLE `customers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `name`, `email`, `password`, `mobile`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'Shaikot', 'shaikot999@gmail.com', '$2y$10$2i/D3NCAW/wus.UNOgGSAuywfjwIMPaYd/0H.iX88TUMgRFljxvRe', '0123456789', 'Savar, Dhaka', '2022-01-23 00:46:18', '2022-01-23 00:46:18'),
-(2, 'Mamun', 'shaikot999@gmail.com', '$2y$10$4zLged7ZqPgr.hmGqIvK0.WJJFkW9gkJd0ixK4FjbPrTS45kPebkK', '0123456789', 'Khilgaon, Dhaka', '2022-01-23 00:47:27', '2022-01-23 05:04:17'),
-(3, 'Sagor', 'shaikot999@gmail.com', '$2y$10$L.a8Tr7LvEpkQwYRK8rfZe5UgKqtwmEWdPeUDXStUblPGVwao14y2', '0123456789', 'Bashundhara, Dhaka', '2022-01-23 06:14:30', '2022-01-23 06:14:30'),
-(4, 'Kamal', 'shaikot999@gmail.com', '$2y$10$SVX2QkJg51d.TPJEJGiABO9SQCXfULso6YXqdJZCun4kdVsIV6cE.', '0123456789', 'Mirpur, Dhaka', '2022-01-23 11:42:20', '2022-01-23 11:42:20');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `failed_jobs`
 --
 
@@ -143,15 +116,16 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2022_01_13_190438_create_sessions_table', 1),
-(7, '2022_01_14_125219_create_categories_table', 2),
-(8, '2022_01_14_134024_create_sub_categories_table', 3),
-(9, '2022_01_14_140846_create_brands_table', 4),
-(10, '2022_01_14_144231_create_units_table', 5),
-(11, '2022_01_14_150548_create_products_table', 6),
-(12, '2022_01_14_160126_create_sub_images_table', 7),
-(13, '2022_01_14_162613_create_orders_table', 8),
-(14, '2022_01_14_162832_create_order_details_table', 8),
-(15, '2022_01_14_163048_create_customers_table', 8);
+(7, '2022_01_14_125219_create_categories_table', 1),
+(8, '2022_01_14_134024_create_sub_categories_table', 1),
+(9, '2022_01_14_140846_create_brands_table', 1),
+(10, '2022_01_14_144231_create_units_table', 1),
+(11, '2022_01_14_150548_create_products_table', 1),
+(12, '2022_01_14_160126_create_sub_images_table', 1),
+(13, '2022_01_14_162613_create_orders_table', 1),
+(14, '2022_01_14_162832_create_order_details_table', 1),
+(15, '2022_01_14_163048_create_customers_table', 1),
+(16, '2022_05_13_170136_create_rating_reviews_table', 2);
 
 -- --------------------------------------------------------
 
@@ -164,8 +138,9 @@ CREATE TABLE `orders` (
   `customer_id` int(11) NOT NULL,
   `order_date` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_timestamp` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_total` double(10,2) NOT NULL,
-  `tax_total` double(10,2) NOT NULL,
+  `order_sub_total` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tax_total` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_total` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
   `payment_amount` double(10,2) NOT NULL DEFAULT 0.00,
   `payment_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
@@ -183,11 +158,10 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_timestamp`, `order_total`, `tax_total`, `order_status`, `payment_amount`, `payment_status`, `payment_date`, `payment_timestamp`, `delivery_status`, `delivery_date`, `delivery_timestamp`, `delivery_address`, `created_at`, `updated_at`) VALUES
-(1, 1, '2022-01-23', '1642896000', 5750.00, 750.00, 'Pending', 0.00, 'Pending', NULL, NULL, 'Pending', NULL, NULL, 'Savar, Dhaka', '2022-01-23 00:46:19', '2022-01-23 00:46:19'),
-(2, 2, '2022-01-23', '1642896000', 517.50, 67.50, 'Pending', 0.00, 'Pending', NULL, NULL, 'Pending', NULL, NULL, 'Basabo, Dhaka', '2022-01-23 00:47:27', '2022-01-23 00:47:27'),
-(3, 3, '2022-01-23', '1642896000', 7820.00, 1020.00, 'Pending', 0.00, 'Pending', NULL, NULL, 'Pending', NULL, NULL, 'Bashundhara, Dhaka', '2022-01-23 06:14:30', '2022-01-23 06:14:30'),
-(4, 4, '2022-01-23', '1642896000', 3162.50, 412.50, 'Pending', 0.00, 'Pending', NULL, NULL, 'Pending', NULL, NULL, 'Mirpur, Dhaka', '2022-01-23 11:42:20', '2022-01-23 11:42:20');
+INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_timestamp`, `order_sub_total`, `tax_total`, `order_total`, `order_status`, `payment_amount`, `payment_status`, `payment_date`, `payment_timestamp`, `delivery_status`, `delivery_date`, `delivery_timestamp`, `delivery_address`, `created_at`, `updated_at`) VALUES
+(1, 6, 'June 3, 2022 12:40:49 pm', '1654260049', '100.00', '5.00', '105.00', 'Pending', 0.00, 'Pending', NULL, NULL, 'Pending', NULL, NULL, 'Banasree, Dhaka, Bangladesh.', '2022-06-03 00:40:49', '2022-06-03 00:40:49'),
+(2, 1, 'June 3, 2022 4:19:32 pm', '1654273172', '6,000.00', '300.00', '6,300.00', 'Pending', 0.00, 'Pending', NULL, NULL, 'Pending', NULL, NULL, 'Banasree, Dhaka, Bangladesh.', '2022-06-03 04:19:32', '2022-06-03 04:19:32'),
+(3, 6, 'June 4, 2022 12:07:29 pm', '1654344449', '2,000.00', '100.00', '2,100.00', 'Pending', 0.00, 'Pending', NULL, NULL, 'Pending', NULL, NULL, 'Banasree, Dhaka, Bangladesh.', '2022-06-04 00:07:29', '2022-06-04 00:07:29');
 
 -- --------------------------------------------------------
 
@@ -210,13 +184,10 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `product_price`, `product_quantity`, `created_at`, `updated_at`) VALUES
-(1, 1, 10, 5000.00, 1, '2022-01-23 00:46:19', '2022-01-23 00:46:19'),
-(2, 2, 3, 450.00, 1, '2022-01-23 00:47:27', '2022-01-23 00:47:27'),
-(3, 3, 8, 1200.00, 1, '2022-01-23 06:14:30', '2022-01-23 06:14:30'),
-(4, 3, 7, 2800.00, 2, '2022-01-23 06:14:30', '2022-01-23 06:14:30'),
-(5, 4, 1, 750.00, 1, '2022-01-23 11:42:20', '2022-01-23 11:42:20'),
-(6, 4, 8, 1200.00, 1, '2022-01-23 11:42:20', '2022-01-23 11:42:20'),
-(7, 4, 4, 800.00, 1, '2022-01-23 11:42:20', '2022-01-23 11:42:20');
+(1, 1, 22, 100.00, 1, '2022-06-03 00:40:49', '2022-06-03 00:40:49'),
+(2, 2, 17, 1500.00, 1, '2022-06-03 04:19:32', '2022-06-03 04:19:32'),
+(3, 2, 9, 4500.00, 1, '2022-06-03 04:19:32', '2022-06-03 04:19:32'),
+(4, 3, 6, 2000.00, 1, '2022-06-04 00:07:29', '2022-06-04 00:07:29');
 
 -- --------------------------------------------------------
 
@@ -325,7 +296,12 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('IPRAwCMnx71uIauuVibPBPC8DL9E0q7QntTW462t', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoicXdOa0hYWHlqTjFoalhiQkpZVmpXa1dKVklPZlFnUW9DRjBHZlBtQSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9sb2NhbGhvc3QvZWNvbS9wdWJsaWMvbG9naW4iO31zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjQzOiJodHRwOi8vbG9jYWxob3N0L2Vjb20vcHVibGljL2VkaXQtcHJvZHVjdC85Ijt9fQ==', 1643007807);
+('7Twzo4JjTRZGjJq5ta3ddu5nGXphjwQkY1gzcN8H', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSnZJYXhWVUNidHZHRnpmSnMxZ3dGb0JvMzA5SXFrZ1VSR2NQTHBDSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9sb2NhbGhvc3QvZWNvbS9wdWJsaWMvc3RvcnkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1654287774),
+('9fzuRDQjngTEGKFHzPzTcVcWMQ8EIDGNSTQj6DfD', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOHZtSmhZbWtrY1lFa0FkODZ6OWljZXBRd1N4dUREOVkwNGhXQUs0cyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9sb2NhbGhvc3QvZWNvbS9wdWJsaWMiO319', 1654193075),
+('hE8dAnx12T28p1HyIStoA4NU9fwYFPML9XkZKwY4', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZm9peEFZa1hMR1gwSkJWUTZCRWc1Tnlpc3dZbVo2Rkhta1ByQXBMYSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9sb2NhbGhvc3QvZWNvbS9wdWJsaWMiO319', 1654322960),
+('Hps9Hz5RmDRTyZynYB8Ce1FdprQONbJMGONewc5c', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiZW1HNFA4V1hTV25GYXR2UklTOVVURXZobmh1ZEFQdWJyazJTcDRDeiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly9sb2NhbGhvc3QvZWNvbS9wdWJsaWMvc2hvdy1jYXJ0Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHdYYlZ4ZUouZzd2eTRJMVFKREhabXVnWkJ6aU9oQm1xTTlzM0ZQZy81bmc1Qkg5cGNONm4yIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCR3WGJWeGVKLmc3dnk0STFRSkRIWm11Z1pCemlPaEJtcU05czNGUGcvNW5nNUJIOXBjTjZuMiI7czo0OiJjYXJ0IjthOjE6e3M6NzoiZGVmYXVsdCI7TzoyOToiSWxsdW1pbmF0ZVxTdXBwb3J0XENvbGxlY3Rpb24iOjI6e3M6ODoiACoAaXRlbXMiO2E6MTp7czozMjoiMGE1ZmVmYjdkZTkwM2FiMjE5MTY2N2ExN2M0MWVmMGEiO086MzI6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtIjoxMTp7czo1OiJyb3dJZCI7czozMjoiMGE1ZmVmYjdkZTkwM2FiMjE5MTY2N2ExN2M0MWVmMGEiO3M6MjoiaWQiO2k6OTtzOjM6InF0eSI7czoxOiIxIjtzOjQ6Im5hbWUiO3M6NDoiVml2byI7czo1OiJwcmljZSI7ZDo0NTAwO3M6Njoid2VpZ2h0IjtkOjA7czo3OiJvcHRpb25zIjtPOjM5OiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbU9wdGlvbnMiOjI6e3M6ODoiACoAaXRlbXMiO2E6MTp7czo1OiJpbWFnZSI7czozNjoiaW1hZ2VzL3Byb2R1Y3QtaW1hZ2VzLzE2NDIzNTYzNzYuanBnIjt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjc6InRheFJhdGUiO2k6NTtzOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtOO3M6NDY6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBkaXNjb3VudFJhdGUiO2k6MDtzOjg6Imluc3RhbmNlIjtzOjc6ImRlZmF1bHQiO319czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO319fQ==', 1654262296),
+('xuU1Bkxzu8HMudMpYzBDpOtSfZsWdmbpGcVDVpSV', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiT3NFSUxZdFJEWkRLOTJUVlZNN2MyT280b3dRNlFFZXlkUHc3em93ViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly9sb2NhbGhvc3QvZWNvbS9wdWJsaWMvc2hvdy1jYXJ0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo0OiJjYXJ0IjthOjE6e3M6NzoiZGVmYXVsdCI7TzoyOToiSWxsdW1pbmF0ZVxTdXBwb3J0XENvbGxlY3Rpb24iOjI6e3M6ODoiACoAaXRlbXMiO2E6MDp7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9fX0=', 1654287575),
+('ZGofqyjf9qvuADRiv9iOgTCNn5v3OtZtV0izJt8w', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiU3hCUHhFSjVreGlCUlhSSzdVaERxMzVFM2M3TW5nZmpUaXJTbW5mZSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9sb2NhbGhvc3QvZWNvbS9wdWJsaWMiO319', 1654238617);
 
 -- --------------------------------------------------------
 
@@ -515,6 +491,9 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
   `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -526,8 +505,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@ecom.com', NULL, '$2y$10$TfBysiuSMVPF1waW4Kvjiu94S.JrLHInXKQ/5ggItmFVnlk6MBXQO', NULL, NULL, NULL, NULL, NULL, '2022-01-13 13:26:11', '2022-01-13 13:26:11');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `phone_number`, `address`, `user_type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@ecom.com', NULL, '$2y$10$wXbVxeJ.g7vy4I1QJDHZmugZBziOhBmqM9s3FPg/5ng5BH9pcN6n2', NULL, NULL, '01716330332', 'Banasree, Dhaka, Bangladesh.', 'admin', NULL, NULL, NULL, '2022-05-08 06:05:25', '2022-05-08 06:05:25'),
+(6, 'Shaikot', 'shaikot999@gmail.com', NULL, '$2y$10$vVmotWudNuHYwsTwlT9IuegbBXXAy0VC1m5w71YP6Cu.7v2vLEvhC', NULL, NULL, '01716330332', 'Banasree, Dhaka, Bangladesh.', 'user', NULL, NULL, NULL, '2022-06-02 11:28:32', '2022-06-02 11:28:32');
 
 --
 -- Indexes for dumped tables
@@ -543,12 +523,6 @@ ALTER TABLE `brands`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -646,12 +620,6 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `customers`
---
-ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -661,19 +629,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -709,7 +677,7 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

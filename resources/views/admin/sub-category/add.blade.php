@@ -29,7 +29,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category name</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="category_id">
+                                <select class="form-control" name="category_id" required>
                                     <option value="" disabled selected> -- Select category name -- </option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -40,19 +40,19 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sub category name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="Enter sub category name"/>
+                                <input class="form-control" type="text" name="name" placeholder="Enter sub category name" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sub category description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description" placeholder="Enter sub category description"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Enter sub category description" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sub category image</label>
                             <div class="col-sm-10">
-                                <input class="form-control-file" type="file" name="image" accept="image/*"/>
+                                <input class="form-control-file" type="file" name="image" accept="image/*" required/>
                             </div>
                         </div>
                         <div class="form-group row">

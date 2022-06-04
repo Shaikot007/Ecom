@@ -29,13 +29,13 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Unit name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="Enter unit name"/>
+                                <input class="form-control" type="text" name="name" placeholder="Enter unit name" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Unit description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description" placeholder="Enter unit description"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Enter unit description" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">

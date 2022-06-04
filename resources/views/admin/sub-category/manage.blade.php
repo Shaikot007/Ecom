@@ -44,10 +44,10 @@
                                     </td>
                                     <td>{{$subCategory->status == 1 ? 'Published' : 'Unpublished'}}</td>
                                     <td>
-                                        <a href="{{route('subcategory.edit', ['id' => $subCategory->id])}}" class="btn btn-success btn-xs">
+                                        <a href="{{route('subcategory.edit', ['id' => $subCategory->id])}}" class="btn btn-success btn-xs" title="Edit">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-danger btn-xs" onclick="event.preventDefault(); document.getElementById('subcategoryDeleteForm{{$subCategory->id}}').submit();">
+                                        <a href="" class="btn btn-danger btn-xs" onclick="event.preventDefault(); document.getElementById('subcategoryDeleteForm{{$subCategory->id}}').submit();" title="Delete">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                         <form action="{{route('subcategory.delete', ['id' => $subCategory->id])}}" method="post" id="subcategoryDeleteForm{{$subCategory->id}}">

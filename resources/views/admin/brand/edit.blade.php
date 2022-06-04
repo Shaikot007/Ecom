@@ -21,20 +21,20 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Brand name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" value="{{$brand->name}}" placeholder="Enter brand name" />
+                                <input class="form-control" type="text" name="name" value="{{$brand->name}}" placeholder="Enter brand name" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Brand description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description" placeholder="Enter brand description">{{$brand->description}}</textarea>
+                                <textarea class="form-control" name="description" placeholder="Enter brand description" required>{{$brand->description}}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Brand image</label>
                             <div class="col-sm-10">
                                 <img src="{{asset($brand->image)}}" alt="Image" height="100" width="150" />
-                                <input class="form-control-file" type="file" name="image" accept="image/*" />
+                                <input class="form-control-file" type="file" name="image" accept="image/*"/>
                             </div>
                         </div>
                         <div class="form-group row">

@@ -29,19 +29,19 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="Enter category name"/>
+                                <input class="form-control" type="text" name="name" placeholder="Enter category name" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description" placeholder="Enter category description"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Enter category description" required></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category image</label>
                             <div class="col-sm-10">
-                                <input class="form-control-file" type="file" name="image" accept="image/*"/>
+                                <input class="form-control-file" type="file" name="image" accept="image/*" required/>
                             </div>
                         </div>
                         <div class="form-group row">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderMail;
 use App\Models\Category;
-use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
@@ -37,7 +36,6 @@ class CheckoutController extends Controller
 
     public function newOrder(Request $request)
     {
-
         $this->user = Auth::user();
 
         Session::put('customer_id', $this->user->id);
@@ -65,7 +63,7 @@ class CheckoutController extends Controller
             $this->orderDetail->save();
         }
 
-        /*==========email send==========*/
+        /*==============================Email send==============================*/
 
         $this->detail = [
             'order_id'          => $this->order->order_timestamp,
@@ -79,11 +77,11 @@ class CheckoutController extends Controller
 
         Mail::to($this->user->email)->send(new OrderMail($this->detail));
 
-        /*==========email send==========*/
+        /*==============================Email send==============================*/
 
         Cart::destroy();
 
-        return redirect('/complete-order')->with('message', 'Your order info submit successfully. Please wait we will contact with you soon.');
+        return redirect('/complete-order')->with('message', 'Your order info submit successfully. Please wait, we will contact with you soon.');
     }
 
     public function completeOrder()

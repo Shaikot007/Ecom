@@ -21,8 +21,7 @@
                                 </button>
                             </div>
                         @endif
-                        <table class="table table-striped table-bordered table-hover text-center" id="example-table"
-                               cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered table-hover text-center" id="example-table" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th class="text-center">Order id</th>
@@ -53,7 +52,7 @@
                                             <a href="{{route('order.details', ['id' => $order->id])}}" class="btn btn-primary btn-xs" title="Order detail">
                                                 <i class="fa fa-search-plus"></i>
                                             </a>
-                                            <a href="{{route('invoice', ['id' => $order->id])}}" class="btn btn-primary btn-xs" title="Invoice" title="Invoice">
+                                            <a href="{{route('invoice', ['id' => $order->id])}}" class="btn btn-primary btn-xs" title="Invoice">
                                                 <i class="fa fa-sticky-note"></i>
                                             </a>
                                         </td>

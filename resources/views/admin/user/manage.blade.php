@@ -21,18 +21,17 @@
                                 </button>
                             </div>
                         @endif
-                        <table class="table table-striped table-bordered table-hover text-center" id="example-table"
-                               cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered table-hover text-center" id="example-table" cellspacing="0" width="100%">
                             <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">User name</th>
-                                <th class="text-center">User email</th>
-                                <th class="text-center">User phone number</th>
-                                <th class="text-center">User address</th>
-                                <th class="text-center">User type</th>
-                                <th class="text-center">Action</th>
-                            </tr>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">User name</th>
+                                    <th class="text-center">User email</th>
+                                    <th class="text-center">User phone number</th>
+                                    <th class="text-center">User address</th>
+                                    <th class="text-center">User type</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
                             </thead>
                             @foreach($users as $user)
                                 <tbody>
@@ -51,8 +50,7 @@
                                                 <a href="" class="btn btn-danger btn-xs" onclick="event.preventDefault(); document.getElementById('userDeleteForm{{$user->id}}').submit();" title="Delete">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-                                                <form action="{{route('user.delete', ['id' => $user->id])}}"
-                                                      method="post" id="userDeleteForm{{$user->id}}">
+                                                <form action="{{route('user.delete', ['id' => $user->id])}}" method="post" id="userDeleteForm{{$user->id}}">
                                                     @csrf
                                                 </form>
                                             @endif

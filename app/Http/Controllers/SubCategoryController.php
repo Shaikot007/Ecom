@@ -21,7 +21,7 @@ class SubCategoryController extends Controller
     public function create(Request $request)
     {
         SubCategory::newSubCategory($request);
-        return redirect()->back()->with('message', 'Sub category info create successfully');
+        return redirect()->back()->with('message', 'Sub category info create successfully.');
     }
 
     public function manage()
@@ -43,12 +43,12 @@ class SubCategoryController extends Controller
     public function update(Request $request, $id)
     {
         SubCategory::updateSubCategory($request, $id);
-        return redirect('/manage-sub-category')->with('message', 'Sub category info update successfully');
+        return redirect('/manage-sub-category')->with('message', 'Sub category info update successfully.');
     }
 
     public function delete(Request $request, $id)
     {
         SubCategory::deleteSubCategory($id);
-        return redirect('/manage-sub-category')->with('message', 'Sub category info delete successfully');
+        return redirect('/manage-sub-category')->with('message', 'Sub category info delete successfully.');
     }
 }

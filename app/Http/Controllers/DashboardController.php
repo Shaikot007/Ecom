@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class DashboardController extends Controller
@@ -15,7 +17,10 @@ class DashboardController extends Controller
     {
         if(Auth::user()->user_type === "admin")
         {
-            return view('admin.dashboard.dashboard');
+            return view('admin.dashboard.dashboard', [
+                'orders'        => Order::orderBy('id', 'desc')->take(20)->get(),
+                'order_details' => OrderDetail::all()
+            ]);
         }
         else {
             return view('front.home.home', [

@@ -29,7 +29,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category name</label>
                             <div class="col-sm-10">
-                                <select class="form-control" required name="category_id" id="categoryId">
+                                <select class="form-control" name="category_id" id="categoryId">
                                     <option value="" disabled selected> -- Select category name -- </option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}"
@@ -41,7 +41,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sub category name</label>
                             <div class="col-sm-10">
-                                <select class="form-control" required name="sub_category_id" id="subCategoryId">
+                                <select class="form-control" name="sub_category_id" id="subCategoryId">
                                     <option value="" disabled selected> -- Select sub category name -- </option>
                                     @foreach($subCategories as $subCategory)
                                         <option value="{{$subCategory->id}}"
@@ -53,7 +53,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Brand name</label>
                             <div class="col-sm-10">
-                                <select class="form-control" required name="brand_id">
+                                <select class="form-control" name="brand_id">
                                     <option value="" disabled selected> -- Select brand name -- </option>
                                     @foreach($brands as $brand)
                                         <option value="{{$brand->id}}"
@@ -65,7 +65,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Unit name</label>
                             <div class="col-sm-10">
-                                <select class="form-control" required name="unit_id">
+                                <select class="form-control" name="unit_id">
                                     <option value="" disabled selected> -- Select unit name -- </option>
                                     @foreach($units as $unit)
                                         <option value="{{$unit->id}}"
@@ -77,37 +77,37 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Product name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" value="{{$product->name}}" placeholder="Enter product name"/>
+                                <input class="form-control" type="text" name="name" value="{{$product->name}}" placeholder="Enter product name" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Product code</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="code" value="{{$product->code}}" placeholder="Enter product code"/>
+                                <input class="form-control" type="text" name="code" value="{{$product->code}}" placeholder="Enter product code" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Regular price</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="number" name="regular_price" value="{{$product->regular_price}}" placeholder="Enter regular price"/>
+                                <input class="form-control" type="number" name="regular_price" value="{{$product->regular_price}}" placeholder="Enter regular price" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Selling price</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="number" name="selling_price" value="{{$product->selling_price}}" placeholder="Enter selling price"/>
+                                <input class="form-control" type="number" name="selling_price" value="{{$product->selling_price}}" placeholder="Enter selling price" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Short description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="short_description" placeholder="Enter short description">{{$product->short_description}}</textarea>
+                                <textarea class="form-control" name="short_description" placeholder="Enter short description" required>{{$product->short_description}}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Long description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="summernote" name="long_description" placeholder="Enter long description">{{$product->long_description}}</textarea>
+                                <textarea class="form-control" id="summernote" name="long_description" placeholder="Enter long description" required>{{$product->long_description}}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">

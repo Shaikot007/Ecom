@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//==============================Ecom route start=============================
+//=============================Ecom route start============================
 
 Route::get('/', [
     'uses'          => 'App\Http\Controllers\EcomController@index',
@@ -65,9 +65,9 @@ Route::get('/search', [
     'as'            => 'search'
 ]);
 
-//===============================Ecom route end==============================
+//==============================Ecom route end=============================
 
-//==============================Cart route start=============================
+//=============================Cart route start============================
 
 Route::post('/add-to-cart/{id}', [
     'uses'          => 'App\Http\Controllers\CartController@add',
@@ -89,9 +89,9 @@ Route::get('/delete-cart/{id}', [
     'as'            => 'cart.delete'
 ]);
 
-//===============================Cart route end==============================
+//==============================Cart route end=============================
 
-//============================Checkout route start============================
+//===========================Checkout route start==========================
 
 Route::get('/checkout', [
     'uses'          => 'App\Http\Controllers\CheckoutController@index',
@@ -113,9 +113,9 @@ Route::get('/customer-logout', [
     'as'            => 'customer.logout'
 ]);
 
-//============================Checkout route end============================
+//===========================Checkout route end============================
 
-//===========================Dashboard route start===========================
+//==========================Dashboard route start==========================
 
 Route::get('/dashboard', [
     'uses'          => 'App\Http\Controllers\DashboardController@index',
@@ -123,9 +123,9 @@ Route::get('/dashboard', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//============================Dashboard route end============================
+//===========================Dashboard route end===========================
 
-//============================Category route start============================
+//==========================Category route start===========================
 
 Route::get('/add-category', [
     'uses'          => 'App\Http\Controllers\CategoryController@index',
@@ -163,9 +163,9 @@ Route::post('/delete-category/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//============================Category route end============================
+//===========================Category route end============================
 
-//=========================Sub category route start=========================
+//========================Sub category route start=========================
 
 Route::get('/add-sub-category', [
     'uses'          => 'App\Http\Controllers\SubCategoryController@index',
@@ -203,9 +203,9 @@ Route::post('/delete-sub-category/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//==========================Sub category route end==========================
+//=========================Sub category route end==========================
 
-//=============================Brand route start============================
+//============================Brand route start============================
 
 Route::get('/add-brand', [
     'uses'          => 'App\Http\Controllers\BrandController@index',
@@ -243,9 +243,9 @@ Route::post('/delete-brand/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//=============================Brand route end============================
+//=============================Brand route end=============================
 
-//=============================Unit route start===========================
+//============================Unit route start=============================
 
 Route::get('/add-unit', [
     'uses'          => 'App\Http\Controllers\UnitController@index',
@@ -283,9 +283,9 @@ Route::post('/delete-unit/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//=============================Unit route end==========================
+//=============================Unit route end==============================
 
-//===========================Product route start=======================
+//===========================Product route start===========================
 
 Route::get('/add-product', [
     'uses'          => 'App\Http\Controllers\ProductController@index',
@@ -329,9 +329,9 @@ Route::get('/get-sub-category-by-id', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//===========================Product route end========================
+//============================Product route end============================
 
-//===========================Order route start========================
+//============================Order route start============================
 
 Route::get('/manage-order', [
     'uses'          => 'App\Http\Controllers\OrderController@manage',
@@ -351,9 +351,9 @@ Route::get('/invoice/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//============================Order route end=========================
+//=============================Order route end=============================
 
-//==========================User route start======================
+//=============================User route start============================
 
 Route::get('/add-user', [
     'uses'          => 'App\Http\Controllers\UserController@index',
@@ -391,4 +391,4 @@ Route::post('/delete-user/{id}', [
     'middleware'    => ['auth:sanctum', 'verified']
 ]);
 
-//==========================User route end==========================
+//==============================User route end=============================

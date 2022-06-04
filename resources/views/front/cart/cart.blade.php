@@ -20,7 +20,6 @@
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
-
         <div class="page-content">
             <div class="cart">
                 <div class="container">
@@ -41,11 +40,8 @@
                                         <th class="text-center">Price</th>
                                         <th class="text-center">Quantity</th>
                                         <th class="text-center">Total</th>
-                                        <th class="text-center"></th>
-                                        <th></th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     @foreach($cart_items as $cart_product)
                                         <tr>
@@ -70,7 +66,7 @@
                                                 </td>
                                                 <td class="total-col text-center">৳ {{number_format($cart_product->price*$cart_product->qty)}}</td>
                                                 <td class="remove-col">
-                                                    <button type="submit" class="btn-outline-dark-2" title="Update cart" style="border: none">
+                                                    <button type="submit" class="btn-outline-dark-2" style="border: none" title="Update cart">
                                                         <i class="icon-refresh"></i>
                                                     </button>
                                                 </td>
@@ -85,11 +81,9 @@
                                 </tbody>
                             </table><!-- End .table table-wishlist -->
                         </div><!-- End .col-lg-9 -->
-
                         <aside class="col-lg-3">
                             <div class="summary summary-cart">
                                 <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
-
                                 <table class="table table-summary">
                                     <tbody>
                                         <tr class="summary-subtotal">
@@ -100,39 +94,30 @@
                                             <td>Shipping:</td>
                                             <td>&nbsp;</td>
                                         </tr>
-
                                         <tr class="summary-shipping-row">
                                             <td>Free Shipping</td>
                                             <td>৳ 0.00</td>
                                         </tr><!-- End .summary-shipping-row -->
-
                                         <tr class="summary-shipping-estimate">
                                             <td>Tax:</td>
                                             <td>৳ {{$cart_tax}}</td>
                                         </tr><!-- End .summary-shipping-estimate -->
-
                                         <tr class="summary-total">
                                             <td>Total:</td>
                                             <td>৳ {{$cart_total}}</td>
                                         </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
-
                                 @if($cart_count !== 0)
-
                                     @if(\Illuminate\Support\Facades\Auth::check())
                                         <a href="{{route('checkout')}}" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
                                     @else
                                         <a href="{{route('register')}}" class="btn btn-outline-primary-2 btn-order btn-block">REGISTER HERE</a>
                                     @endif
-
                                 @endif
-
                             </div><!-- End .summary -->
-
                             <a href="{{route('home')}}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
                         </aside><!-- End .col-lg-3 -->
-
                     </div><!-- End .row -->
                 </div><!-- End .container -->
             </div><!-- End .cart -->

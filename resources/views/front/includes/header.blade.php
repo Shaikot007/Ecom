@@ -2,16 +2,10 @@
     <div class="header-middle">
         <div class="container">
             <div class="header-left">
-                <button class="mobile-menu-toggler">
-                    <span class="sr-only">Toggle mobile menu</span>
-                    <i class="icon-bars"></i>
-                </button>
-
                 <a href="{{route('home')}}" class="logo">
                     <img src="{{asset('/images/ecom_logo/ecom-logo.png')}}" alt="ecom Logo" width="105" height="25"/>
                 </a>
             </div><!-- End .header-left -->
-
             <div class="header-center">
                 <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                     <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
@@ -24,7 +18,6 @@
                     </form>
                 </div><!-- End .header-search -->
             </div>
-
             <div class="header-right">
                 <div class="dropdown cart-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
@@ -34,7 +27,6 @@
                         </div>
                         <p>Cart</p>
                     </a>
-
                     @if($cart_count !== 0)
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-cart-products">
@@ -44,13 +36,11 @@
                                             <h4 class="product-title">
                                                 <p>{{$cart->name}}</p>
                                             </h4>
-
                                             <span class="cart-product-info">
                                                 <span class="cart-product-qty">{{$cart->qty}}</span>
                                                 x ৳ {{$cart->price}}
                                             </span>
                                         </div><!-- End .product-cart-details -->
-
                                         <figure class="product-image-container">
                                             <div class="product-image">
                                                 <img src="{{asset($cart->options->image)}}" alt="product"/>
@@ -60,31 +50,18 @@
                                     </div><!-- End .product -->
                                 @endforeach
                             </div><!-- End .cart-product -->
-
                             <div class="dropdown-cart-total">
                                 <span>Total</span>
-
                                 <span class="cart-total-price">৳ {{$cart_total}}</span>
                             </div><!-- End .dropdown-cart-total -->
-
                             <div class="dropdown-cart-action">
                                 <a href="{{route('cart.show')}}" class="btn btn-primary">View Cart</a>
                                 <a href="{{route('checkout')}}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .dropdown-cart-total -->
                         </div><!-- End .dropdown-menu -->
                     @endif
-
                 </div><!-- End .cart-dropdown -->
-
                 <div class="wishlist">
-                    {{--@if(Session::get('customer_id'))--}}
-                        {{--<a href="{{route('customer.logout')}}" title="Sign out">--}}
-                            {{--<div class="icon">--}}
-                                {{--<i class="icon-user"></i>--}}
-                            {{--</div>--}}
-                            {{--<p>Sign out</p>--}}
-                        {{--</a>--}}
-
                     @if(\Illuminate\Support\Facades\Auth::user() || Session::get('customer_id') )
                         <a href="{{route('logout')}}" title="Sign out" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
                             <div class="icon">
@@ -102,22 +79,11 @@
                             </div>
                             <p>Register</p>
                         </a>
-
-
-
-                        {{--<a href="#signin-modal" data-toggle="modal" title="Sign in / Sign up">--}}
-                            {{--<div class="icon">--}}
-                                {{--<i class="icon-user"></i>--}}
-                            {{--</div>--}}
-                            {{--<p>Sign in / Sign up</p>--}}
-                        {{--</a>--}}
                     @endif
                 </div><!-- End .compare-dropdown -->
-
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
-
     <div class="header-bottom sticky-header">
         <div class="container">
             <div class="header-left">
@@ -147,7 +113,6 @@
                     </div><!-- End .dropdown-menu -->
                 </div><!-- End .category-dropdown -->
             </div><!-- End .header-left -->
-
             <div class="header-right">
                 <i class="la la-lightbulb-o"></i><p>Clearance<span class="highlight">&nbsp;Up to 10% Off</span></p>
             </div>

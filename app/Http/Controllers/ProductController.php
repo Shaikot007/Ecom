@@ -28,10 +28,10 @@ class ProductController extends Controller
         $this->units            = Unit::all();
 
         return view('admin.product.add', [
-            'categories'    => $this->categories,
-            'subCategories' => $this->subCategories,
-            'brands'        => $this->brands,
-            'units'         => $this->units
+            'categories'        => $this->categories,
+            'subCategories'     => $this->subCategories,
+            'brands'            => $this->brands,
+            'units'             => $this->units
         ]);
     }
 
@@ -58,12 +58,12 @@ class ProductController extends Controller
         $this->subImages        = SubImage::where('product_id', $id)->get();
 
         return view('admin.product.edit', [
-            'product'       => $this->product,
-            'categories'    => $this->categories,
-            'subCategories' => $this->subCategories,
-            'brands'        => $this->brands,
-            'units'         => $this->units,
-            'subImages'     => $this->subImages
+            'product'           => $this->product,
+            'categories'        => $this->categories,
+            'subCategories'     => $this->subCategories,
+            'brands'            => $this->brands,
+            'units'             => $this->units,
+            'subImages'         => $this->subImages
         ]);
     }
 

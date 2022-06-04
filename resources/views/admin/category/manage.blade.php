@@ -42,10 +42,10 @@
                                     </td>
                                     <td>{{$category->status == 1 ? 'Published' : 'Unpublished'}}</td>
                                     <td>
-                                        <a href="{{route('category.edit', ['id' => $category->id])}}" class="btn btn-success btn-xs">
+                                        <a href="{{route('category.edit', ['id' => $category->id])}}" class="btn btn-success btn-xs" title="Edit">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-danger btn-xs" onclick="event.preventDefault(); document.getElementById('categoryDeleteForm{{$category->id}}').submit();">
+                                        <a href="" class="btn btn-danger btn-xs" onclick="event.preventDefault(); document.getElementById('categoryDeleteForm{{$category->id}}').submit();" title="Delete">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                         <form action="{{route('category.delete', ['id' => $category->id])}}" method="post" id="categoryDeleteForm{{$category->id}}">

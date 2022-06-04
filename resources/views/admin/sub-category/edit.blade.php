@@ -42,14 +42,13 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sub category name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" value="{{$subCategory->name}}" placeholder="Enter sub category name"/>
+                                <input class="form-control" type="text" name="name" value="{{$subCategory->name}}" placeholder="Enter sub category name" required/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Sub category description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description"
-                                          placeholder="Enter sub category description">{{$subCategory->description}}</textarea>
+                                <textarea class="form-control" name="description" placeholder="Enter sub category description" required>{{$subCategory->description}}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">

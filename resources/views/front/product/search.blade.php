@@ -19,7 +19,6 @@
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
-
         <div class="page-content">
             <div class="container">
                 <div class="products">
@@ -29,25 +28,17 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <img src="{{asset($product->image)}}" alt="Product image" class="product-image"/>
-
                                         <div class="product-action action-icon-top">
                                             <a href="{{route('product-details', ['id' => $product->id])}}" class="btn btn-outline-warning btn-block" title="Product details">
                                                 <span>Product details</span>
                                             </a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
-
                                     <div class="product-body">
                                         <h3 class="product-title"><a href="{{route('product-details', ['id' => $product->id])}}">{{$product->name}}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
                                             ৳ {{$product->selling_price}}
                                         </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: {{$product->review_count}}%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( {{$product->review_count}} Reviews )</span>
-                                        </div><!-- End .rating-container -->
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
                             </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->

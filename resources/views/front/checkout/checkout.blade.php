@@ -20,7 +20,6 @@
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
-
         <div class="page-content">
             <div class="checkout">
                 <div class="container">
@@ -28,20 +27,17 @@
                         @csrf
                         <div class="row">
                             <div class="col-lg-2">
-                            </div>
-
+                            </div><!-- End .col-lg-2 -->
                             <div class="col-lg-8">
                                 <div class="summary">
                                     <h3 class="summary-title">Your order</h3>
-
                                     <table class="table table-summary">
                                         <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Total</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Total</th>
+                                            </tr>
                                         </thead>
-
                                         <tbody>
                                             @foreach($cart_items as $cart_product)
                                                 <tr>
@@ -67,7 +63,6 @@
                                             </tr>
                                         </tbody>
                                     </table><!-- End .table table-summary -->
-
                                     @if(\Illuminate\Support\Facades\Auth::check() && $cart_count !== 0)
                                         <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                             Place Order
@@ -75,10 +70,8 @@
                                     @endif
                                 </div><!-- End .summary -->
                             </div><!-- End .col-lg-8 -->
-
                             <div class="col-lg-2">
-                            </div>
-
+                            </div><!-- End .col-lg-2 -->
                         </div><!-- End .row -->
                     </form>
                 </div><!-- End .container -->
