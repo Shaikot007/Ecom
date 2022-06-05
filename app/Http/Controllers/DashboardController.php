@@ -18,7 +18,7 @@ class DashboardController extends Controller
         if(Auth::user()->user_type === "admin")
         {
             return view('admin.dashboard.dashboard', [
-                'orders'        => Order::orderBy('id', 'desc')->take(20)->get(),
+                'orders'        => Order::orderBy('id', 'desc')->take(25)->get(),
                 'order_details' => OrderDetail::all()
             ]);
         }
